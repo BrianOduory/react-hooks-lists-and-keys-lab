@@ -6,12 +6,23 @@ import ProjectList from "./ProjectList";
 import user from "../data/user";
 
 function App() {
+  console.log("User data:", user);
+  console.log("User links:", user?.links);
+
   return (
     <div>
       <NavBar />
-      <Home username={user.name} city={user.city} color={user.color} />
-      <About bio={user.bio} links={user.links} />
-      <ProjectList projects={user.projects} />
+      <Home 
+        name={user?.name}
+        city={user?.city}
+        color={user?.color}
+      />
+      <About 
+        bio={user?.bio}
+        github={user?.links?.github}
+        linkedin={user?.links?.linkedin}
+      />
+      <ProjectList projects={user?.projects || []} />
     </div>
   );
 }
